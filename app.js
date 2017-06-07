@@ -19,21 +19,31 @@ const app = {
     const listItem = this.renderListItem(flick)
     var promoteButton = document.createElement('button')
     var deleteButton = document.createElement('button')
+    var upButton = document.createElement('button')
+    var downButton = document.createElement('button')
+
+    upButton.classList.add('up')
+    downButton.classList.add('down')
     deleteButton.classList.add('del')
     promoteButton.classList.add('promo')
     promoteButton.classList.add('notclicked')
     promoteButton.textContent = '❤'
     deleteButton.textContent = '🗑'
+    upButton.textContent = '👆'
+    downButton.textContent = '👇'
+
     this.list.appendChild(listItem)
     listItem.appendChild(promoteButton)
     listItem.appendChild(deleteButton)
+    listItem.appendChild(upButton)
+    listItem.appendChild(downButton)
     deleteButton.addEventListener("click", anotherFunction.bind(this))
     promoteButton.addEventListener("click", myFunction)
     
+    //delete
     function anotherFunction(ev){
       for (var i=0; i < this.flicks.length; i++){
         if (this.flicks[i].name === flick.name) {
-          console.log("GOTCHA")
           this.flicks.splice(i,1);
           break;
         }
@@ -41,6 +51,7 @@ const app = {
       this.list.removeChild(listItem)
     }
 
+    //promote
     function myFunction(){
         if (promoteButton.classList.contains('notclicked')){
             this.classList.add('clicked')
@@ -52,12 +63,12 @@ const app = {
             listItem.style.backgroundColor = '#DDA0DD'
             this.classList.add('notclicked')
             listItem.style.textTransform = "none"
-            listItem.style.fontSize = '15px'
+            listItem.style.fontSize = '18px'
             this.classList.remove('clicked')
         }
     }
     
-    // TODO: Add flick to this.flicks
+    //Add flick to this.flicks
     this.flicks.push(flick)
     
     ++ this.max

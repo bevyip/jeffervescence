@@ -1,12 +1,17 @@
+body{
+    background-color: #99ebff;
+    background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 0%, rgba(188,224,238,1) 100%);
+}
 h1{
     font-family: "Trebuchet MS";
     font: bold;
+    font-size: 40px;
 }
 
 #flick-list li{
     background-color: #DDA0DD;
     list-style-type: none;
-    font: 300 15px "Trebuchet MS"; 
+    font: 300 18px "Trebuchet MS"; 
     padding: 5px;
 }
 
@@ -22,25 +27,27 @@ li{
 }*/
 
 .del{
-    margin-left: 11%;
-    border-style: solid;
-    border-color: black;
+    margin-left: 9%;
 }
 
 .promo{
     margin-left: 8%;
-    border-style: solid;
-    border-color: black;
+    color: maroon;
 }
 
+.up{
+    margin-left: 10%;
+    
+}
+
+.down{
+    margin-left: 11%;
+    
+}
 .notclicked{
     background-color:#DDA0DD;
 }
 
 .clicked{
     background-color: yellow;
-}
-
-.present{
-
 }
