@@ -1,7 +1,5 @@
 # Jeffervescence
 
-update your code with Davey's!
-
 ## Day 3 Homework
 
 * Store the flicks in an array, as well as in the DOM

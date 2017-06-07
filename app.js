@@ -18,8 +18,9 @@ const app = {
 
     const listItem = this.renderListItem(flick)
     this.list.appendChild(listItem)
-
+    
     // TODO: Add flick to this.flicks
+    this.flicks.push(flick)
 
     ++ this.max
   },
