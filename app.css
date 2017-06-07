@@ -1,11 +1,17 @@
 body{
-    background-color: #99ebff;
     background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 0%, rgba(188,224,238,1) 100%);
+    background-image: url("http://i.imgur.com/xMVcEr2.png");
+    background-repeat: repeat;
+    
 }
+
 h1{
+    background-color: #99ebff;
+    text-align: center;
     font-family: "Trebuchet MS";
-    font: bold;
-    font-size: 40px;
+    font-weight: bold;
+    font-size: 50px;
+    
 }
 
 #flick-list li{
@@ -13,36 +19,38 @@ h1{
     list-style-type: none;
     font: 300 18px "Trebuchet MS"; 
     padding: 5px;
+    text-align: center;
 }
 
 li{
     margin-top: 10px;
     margin-left: -2.5%;
+    padding: 10px;
 }
-
-/*#flick-list button{
-    margin-left: 5%;
-    border-style: solid;
-    border-color: black;
-}*/
 
 .del{
     margin-left: 9%;
+    cursor: pointer; 
+    cursor: hand; 
 }
 
 .promo{
     margin-left: 8%;
     color: maroon;
+    cursor: pointer; 
+    cursor: hand; 
 }
 
 .up{
     margin-left: 10%;
-    
+    cursor: pointer; 
+    cursor: hand; 
 }
 
 .down{
     margin-left: 11%;
-    
+    cursor: pointer; 
+    cursor: hand; 
 }
 .notclicked{
     background-color:#DDA0DD;

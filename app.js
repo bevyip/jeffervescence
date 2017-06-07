@@ -110,7 +110,7 @@ const app = {
             this.classList.add('clicked')
             listItem.style.backgroundColor = 'yellow'
             listItem.style.textTransform = "uppercase"
-            listItem.style.fontSize = '30px'
+            listItem.style.fontSize = '25px'
             this.classList.remove('notclicked')
         }else{
             listItem.style.backgroundColor = '#DDA0DD'
