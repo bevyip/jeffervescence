@@ -1,38 +1,37 @@
 const app = {
-    init(formSelector){
-        this.flicks = []
-        this.max = 0
-        this.list = document.querySelector(selectors.listSelector)
-        document
-            .querySelector(selectors.formSelector)
-            .addEventListener('submit', this.addFlick)
-    },
-    
-    renderListItem(flick){
-        const item = document.createElement('li')
-        item.textContent = flick.name
-        return item
-    },
+  init(selectors) {
+    this.flicks = []
+    this.max = 0
+    this.list = document.querySelector(selectors.listSelector)
+    document
+      .querySelector(selectors.formSelector)
+      .addEventListener('submit', this.addFlick.bind(this))
+  },
 
-    addFlick(e){
-            e.preventDefault()
-            const flickName = e.target
-            const flick = {
-                id: this.max +1,
-                name: flickName.value,
-            }
+  addFlick(ev) {
+    ev.preventDefault()
+    const f = ev.target
+    const flick = {
+      id: this.max + 1,
+      name: f.flickName.value,
+    }
 
-            const listItem = this.renderListItem(flick)
-            this.list.appendChild(listItem)
-        
-        //TODO: Add items to flicks array
+    const listItem = this.renderListItem(flick)
+    this.list.appendChild(listItem)
 
-            ++this.max
-    },
+    // TODO: Add flick to this.flicks
 
+    ++ this.max
+  },
+
+  renderListItem(flick) {
+    const item = document.createElement('li')
+    item.textContent = flick.name
+    return item
+  },
 }
 
 app.init({
-    formSelector: '#flick-form',
-    listSelector: '#flick-list',
+  formSelector: '#flick-form',
+  listSelector: '#flick-list'
 })
