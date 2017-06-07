@@ -8,7 +8,7 @@
 
 * Add a promote/fav button, just like you did yesterday
 * Add a delete button, just like yesterday
-* Add buttons to move a flick up and down and list
+* Add buttons to move a flick up and down a list
 
 ### Super Mega Bonus Credit Hyper Fighting
 

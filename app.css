@@ -1,0 +1,46 @@
+h1{
+    font-family: "Trebuchet MS";
+    font: bold;
+}
+
+#flick-list li{
+    background-color: #DDA0DD;
+    list-style-type: none;
+    font: 300 15px "Trebuchet MS"; 
+    padding: 5px;
+}
+
+li{
+    margin-top: 10px;
+    margin-left: -2.5%;
+}
+
+/*#flick-list button{
+    margin-left: 5%;
+    border-style: solid;
+    border-color: black;
+}*/
+
+.del{
+    margin-left: 11%;
+    border-style: solid;
+    border-color: black;
+}
+
+.promo{
+    margin-left: 8%;
+    border-style: solid;
+    border-color: black;
+}
+
+.notclicked{
+    background-color:#DDA0DD;
+}
+
+.clicked{
+    background-color: yellow;
+}
+
+.present{
+
+}
