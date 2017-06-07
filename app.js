@@ -37,9 +37,62 @@ const app = {
     listItem.appendChild(deleteButton)
     listItem.appendChild(upButton)
     listItem.appendChild(downButton)
+    upButton.addEventListener("click", upFunction.bind(this))
+    downButton.addEventListener("click", downFunction.bind(this))
     deleteButton.addEventListener("click", anotherFunction.bind(this))
     promoteButton.addEventListener("click", myFunction)
     
+    function upFunction(e){
+      const text = e.target.parentNode.textContent[0]
+      var index = 0;
+      for (var i=0; i<this.flicks.length; i++){
+        if (this.flicks[i].name === text) {
+          index = i
+          break
+        }
+      }
+      
+      if (index === 0){
+        const curr = this.flicks[index]
+        this.flicks.splice(0,1)
+        this.flicks.push(curr)
+      }else{
+        const next = this.flicks[index-1]
+        const curr = this.flicks[index]
+        this.flicks[index-1] = curr
+        this.flicks[index] = next
+      }
+      
+      this.list.insertBefore(e.target.parentNode, e.target.parentNode.previousSibling)
+        
+    }
+
+    function downFunction(e){
+      const text = e.target.parentNode.textContent[0]
+      var index = 0;
+      for (var i=0; i<this.flicks.length; i++){
+        if (this.flicks[i].name === text) {
+          index = i
+          break
+        }
+      }
+
+      if (index !== this.flicks.length-1){
+        const next = this.flicks[index+1]
+        const curr = this.flicks[index]
+        this.flicks[index+1] = curr
+        this.flicks[index] = next
+      }else{
+        return;
+      }
+
+      console.log(this.flicks)
+
+      if (e.target.parentNode.nextSibling){
+        this.list.insertBefore(e.target.parentNode, e.target.parentNode.nextSibling.nextSibling)
+      }
+  }
+   
     //delete
     function anotherFunction(ev){
       for (var i=0; i < this.flicks.length; i++){
@@ -67,7 +120,7 @@ const app = {
             this.classList.remove('clicked')
         }
     }
-    
+
     //Add flick to this.flicks
     this.flicks.push(flick)
     
