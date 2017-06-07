@@ -37,6 +37,11 @@ const app = {
     listItem.appendChild(deleteButton)
     listItem.appendChild(upButton)
     listItem.appendChild(downButton)
+
+    setTimeout(function() {
+      newLI.className = newLI.className + " show";
+    }, 10);
+
     upButton.addEventListener("click", upFunction.bind(this))
     downButton.addEventListener("click", downFunction.bind(this))
     deleteButton.addEventListener("click", anotherFunction.bind(this))

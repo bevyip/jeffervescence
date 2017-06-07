@@ -2,7 +2,6 @@ body{
     background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 0%, rgba(188,224,238,1) 100%);
     background-image: url("http://i.imgur.com/xMVcEr2.png");
     background-repeat: repeat;
-    
 }
 
 h1{
@@ -11,7 +10,6 @@ h1{
     font-family: "Trebuchet MS";
     font-weight: bold;
     font-size: 50px;
-    
 }
 
 #flick-list li{
@@ -49,8 +47,8 @@ li{
 
 .down{
     margin-left: 11%;
-    cursor: pointer; 
-    cursor: hand; 
+    cursor: pointer;
+    cursor: hand;
 }
 .notclicked{
     background-color:#DDA0DD;
