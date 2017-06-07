@@ -91,8 +91,6 @@ const app = {
         return;
       }
 
-      console.log(this.flicks)
-
       if (e.target.parentNode.nextSibling){
         this.list.insertBefore(e.target.parentNode, e.target.parentNode.nextSibling.nextSibling)
       }
