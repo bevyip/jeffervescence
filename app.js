@@ -26,32 +26,62 @@ const app = {
 
   addFlick(flick) {
     const listItem = this.renderListItem(flick)
+    const yearLabel = document.createElement('yearLabel')
+    var editButton = document.createElement('button')
     var promoteButton = document.createElement('button')
     var deleteButton = document.createElement('button')
     var upButton = document.createElement('button')
     var downButton = document.createElement('button')
+    listItem.spellcheck = false;
 
+    listItem.classList.add('mainFlick')
+    yearLabel.classList.add('yearLabel')
+    editButton.classList.add('edit')
+    editButton.classList.add('noclicked')
     upButton.classList.add('up')
     downButton.classList.add('down')
     deleteButton.classList.add('del')
     promoteButton.classList.add('promo')
     promoteButton.classList.add('notclicked')
+
+    yearLabel.textContent = flick.year
+    editButton.textContent = '🖋'
     promoteButton.textContent = '❤'
     deleteButton.textContent = '🗑'
     upButton.textContent = '👆'
     downButton.textContent = '👇'
 
+    listItem.appendChild(yearLabel)
+    listItem.appendChild(editButton)
     listItem.appendChild(promoteButton)
     listItem.appendChild(deleteButton)
     listItem.appendChild(upButton)
     listItem.appendChild(downButton)
     this.list.appendChild(listItem)
   
+    editButton.addEventListener("click", editFunction.bind(this))
     upButton.addEventListener("click", upFunction.bind(this))
     downButton.addEventListener("click", downFunction.bind(this))
     deleteButton.addEventListener("click", anotherFunction.bind(this))
     promoteButton.addEventListener("click", myFunction)
     
+    function editFunction(e){
+      if (editButton.classList.contains('noclicked')){
+            editButton.classList.add('yesclicked')
+            const mainFlick = e.target.closest(".mainFlick").querySelector('.flick-name')
+            mainFlick.contentEditable = true
+            mainFlick.style.backgroundColor = 'white'
+            mainFlick.style.padding = "5px"
+            mainFlick.focus()
+            editButton.classList.remove('noclicked')
+      }else{
+            editButton.classList.add('noclicked')
+            const mainFlick = e.target.closest(".mainFlick").querySelector('.flick-name')
+            mainFlick.contentEditable = false;
+            mainFlick.style.backgroundColor = '#DDA0DD'
+            editButton.classList.remove('yesclicked')
+      }
+    }
     
     function upFunction(e){
       
@@ -159,9 +189,7 @@ const app = {
         }
     }
 
-     this.list
-       .insertBefore(listItem, this.list.firstChild)
-    
+    this.list.insertBefore(listItem, this.list.firstChild)
     ++ this.max
     this.flicks.unshift(flick)
     this.save()
@@ -200,7 +228,7 @@ const app = {
     item.classList.remove('template')
     item
       .querySelector('.flick-name')
-      .textContent = flick.name + " - " + flick.year
+      .textContent = flick.name 
     
     return item
   },

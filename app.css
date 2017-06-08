@@ -13,7 +13,7 @@ h1{
 }
 
 .template{
-    visibility: hidden;
+    display: none;
 }
 
 input.input-group-field1{
@@ -43,6 +43,7 @@ button.success button{
     font: 300 20px "Trebuchet MS"; 
     padding: 10px;
     text-align: center;
+    cursor: default;
 }
 
 li{
@@ -51,30 +52,45 @@ li{
     padding: 10px;
 }
 
+.yearLabel{
+   margin-left: 6%;  
+}
+
+.edit{
+    margin-left: 6.2%;
+    cursor: pointer; 
+    cursor: hand;
+}
+
 .del{
-    margin-left: 9%;
+    margin-left: 6.6%;
     cursor: pointer; 
     cursor: hand; 
 }
 
 .promo{
-    margin-left: 8%;
+    margin-left: 6.4%;
     color: maroon;
     cursor: pointer; 
     cursor: hand; 
 }
 
 .up{
-    margin-left: 10%;
+    margin-left: 6.8%;
     cursor: pointer; 
     cursor: hand; 
 }
 
 .down{
-    margin-left: 11%;
+    margin-left: 7%;
     cursor: pointer;
     cursor: hand;
 }
+
+.yesclicked{
+    font-size: 25px;
+    font-weight: bold;
+}*/
 .notclicked{
     background-color:#DDA0DD;
 }
