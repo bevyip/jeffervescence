@@ -65,21 +65,33 @@ const app = {
     deleteButton.addEventListener("click", anotherFunction.bind(this))
     promoteButton.addEventListener("click", myFunction)
     
+    let initial = null;
+
     function editFunction(e){
       if (editButton.classList.contains('noclicked')){
             editButton.classList.add('yesclicked')
             const mainFlick = e.target.closest(".mainFlick").querySelector('.flick-name')
+            initial = mainFlick.textContent
             mainFlick.contentEditable = true
             mainFlick.style.backgroundColor = 'white'
             mainFlick.style.padding = "5px"
             mainFlick.focus()
             editButton.classList.remove('noclicked')
+            this.save()
       }else{
             editButton.classList.add('noclicked')
             const mainFlick = e.target.closest(".mainFlick").querySelector('.flick-name')
             mainFlick.contentEditable = false;
             mainFlick.style.backgroundColor = '#DDA0DD'
             editButton.classList.remove('yesclicked')
+            for (let i=0; i < this.flicks.length; i++){ //don't use var
+              console.log(this.flicks[i].name === initial)
+              if (this.flicks[i].name === initial) {
+                this.flicks[i].name = mainFlick.textContent
+                this.save()
+                break;
+              }
+            }
       }
     }
     
