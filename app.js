@@ -96,13 +96,16 @@ const app = {
    
     //delete
     function anotherFunction(ev){
-      for (var i=0; i < this.flicks.length; i++){
+      for (let i=0; i < this.flicks.length; i++){ //don't use var
         if (this.flicks[i].name === flick.name) {
           this.flicks.splice(i,1);
           break;
         }
       }
       this.list.removeChild(listItem)
+      //Alternative:
+      //const lisItem = ev.target.closest('.flick')
+      //listItem.remove()
     }
 
     //promote
