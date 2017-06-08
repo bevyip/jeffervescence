@@ -60,12 +60,16 @@ li{
     margin-left: 6.2%;
     cursor: pointer; 
     cursor: hand;
+    font-weight: bold;
+    font-size: 22px;
 }
 
 .del{
     margin-left: 6.6%;
     cursor: pointer; 
     cursor: hand; 
+    font-weight: bold;
+    font-size: 22px;
 }
 
 .promo{
@@ -88,7 +92,7 @@ li{
 }
 
 .yesclicked{
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
 }*/
 .notclicked{
