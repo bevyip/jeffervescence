@@ -39,10 +39,6 @@ const app = {
     listItem.appendChild(upButton)
     listItem.appendChild(downButton)
 
-    setTimeout(function() {
-      newLI.className = newLI.className + " show";
-    }, 10);
-
     upButton.addEventListener("click", upFunction.bind(this))
     downButton.addEventListener("click", downFunction.bind(this))
     deleteButton.addEventListener("click", anotherFunction.bind(this))
@@ -137,6 +133,7 @@ const app = {
   renderListItem(flick) {
     const item = document.createElement('li')
     item.textContent = flick.name
+    item.dataset.id = flick.id
     return item
   },
 }
