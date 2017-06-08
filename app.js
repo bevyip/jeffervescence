@@ -8,7 +8,6 @@ const app = {
       .querySelector(selectors.formSelector)
       .addEventListener('submit', this.addFlickViaForm.bind(this))
     this.load()
-  
   },
 
   // load saved data when browser refreshes
@@ -137,7 +136,7 @@ const app = {
       }
       this.list.removeChild(listItem)
       this.save()
-      console.log(this.flicks)
+      console.log(this.flicks )
       //Alternative:
       //const lisItem = ev.target.closest('.flick')
       //listItem.remove()
@@ -174,6 +173,7 @@ const app = {
     const flick = {
       id: this.max + 1,
       name: f.flickName.value,
+      year: f.flickYear.value,
     }
 
     //Add flick to this.flicks
@@ -200,7 +200,7 @@ const app = {
     item.classList.remove('template')
     item
       .querySelector('.flick-name')
-      .textContent = flick.name
+      .textContent = flick.name + " - " + flick.year
     
     return item
   },
