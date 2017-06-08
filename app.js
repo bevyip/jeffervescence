@@ -137,6 +137,7 @@ const app = {
       }
       this.list.removeChild(listItem)
       this.save()
+      console.log(this.flicks)
       //Alternative:
       //const lisItem = ev.target.closest('.flick')
       //listItem.remove()

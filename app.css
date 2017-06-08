@@ -16,11 +16,32 @@ h1{
     visibility: hidden;
 }
 
+input.input-group-field1{
+    float: left;
+    width: 65%;
+    margin-top: 18px;
+    padding: 18px;
+}
+
+input.input-group-field2{
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 18px;
+    width: 30%;
+    padding: 18px;
+}
+
+button.success button{
+    display: inline-block;
+    margin: 0px;
+    
+}
+
 #flick-list li{
     background-color: #DDA0DD;
     list-style-type: none;
-    font: 300 18px "Trebuchet MS"; 
-    padding: 5px;
+    font: 300 20px "Trebuchet MS"; 
+    padding: 10px;
     text-align: center;
 }
 
