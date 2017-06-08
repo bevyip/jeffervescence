@@ -54,6 +54,7 @@ const app = {
           break
         }
       }
+      this.save()
       
       if (index === 0){
         const curr = this.flicks[index]
@@ -79,6 +80,7 @@ const app = {
           break
         }
       }
+      this.save()
 
       if (index !== this.flicks.length-1){
         const next = this.flicks[index+1]
@@ -103,6 +105,7 @@ const app = {
         }
       }
       this.list.removeChild(listItem)
+      this.save()
       //Alternative:
       //const lisItem = ev.target.closest('.flick')
       //listItem.remove()
@@ -127,7 +130,8 @@ const app = {
 
     //Add flick to this.flicks
     this.flicks.unshift(flick)
-
+    
+    this.save()
     //unshift method adds element to start of array and returns new length
     //shift method rmeoves first element from array and returns that element
     
@@ -135,6 +139,12 @@ const app = {
     f.reset()
     
 
+  },
+ 
+  //stores info in browsers wuhuuuuu  
+  save(){
+    localStorage
+      .setItem('flicks', JSON.stringify(this.flicks))
   },
 
   renderListItem(flick) {
