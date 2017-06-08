@@ -6,6 +6,7 @@ const app = {
     document
       .querySelector(selectors.formSelector)
       .addEventListener('submit', this.addFlick.bind(this))
+
   },
 
   addFlick(ev) {
@@ -128,6 +129,9 @@ const app = {
     this.flicks.push(flick)
     
     ++ this.max
+    f.reset()
+    
+
   },
 
   renderListItem(flick) {
