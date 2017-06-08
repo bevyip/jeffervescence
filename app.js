@@ -6,11 +6,35 @@ const app = {
     this.template = document.querySelector(selectors.templateSelector)
     document
       .querySelector(selectors.formSelector)
-      .addEventListener('submit', this.addFlick.bind(this))
-
+      .addEventListener('submit', this.addFlickViaForm.bind(this))
+    this.load()
   },
 
-  addFlick(ev) {
+  // load saved data when browser refreshes
+  load(){
+    //Get JSON string out of localStorage
+    const flicksJSON = localStorage.getItem('flicks')
+    //Turn that into an array
+    const flicksArray = JSON.parse(flicksJSON)
+    //Set this.flicks to that array
+    if (flicksArray){
+      flicksArray
+        .reverse()
+        .map(this.addFlick.bind(this))
+    }
+  },
+
+  addFlick(flick) {
+    const listItem = this.renderListItem(flick)
+    this.list
+      .insertBefore(listItem, this.list.firstChild)
+    
+    ++ this.max
+    this.flicks.unshift(flick)
+    this.save()
+  },
+
+  addFlickViaForm(ev) {
     ev.preventDefault()
     const f = ev.target
     const flick = {
@@ -129,13 +153,14 @@ const app = {
     }
 
     //Add flick to this.flicks
-    this.flicks.unshift(flick)
+    //this.flicks.unshift(flick)
     
-    this.save()
+    //this.save()
     //unshift method adds element to start of array and returns new length
     //shift method rmeoves first element from array and returns that element
     
-    ++ this.max
+    this.addFlick(flick)
+
     f.reset()
     
 
