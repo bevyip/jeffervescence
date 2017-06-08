@@ -122,7 +122,10 @@ const app = {
     }
 
     //Add flick to this.flicks
-    this.flicks.push(flick)
+    this.flicks.unshift(flick)
+
+    //unshift method adds element to start of array and returns new length
+    //shift method rmeoves first element from array and returns that element
     
     ++ this.max
     f.reset()
