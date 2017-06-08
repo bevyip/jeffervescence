@@ -25,6 +25,7 @@
 ### Super Mega Bonus Credit
 
 * Edit the names of flicks already in list (and make sure changes persist across page loads) Make that span's _content editable_ somehow
+* Edit year toooooooooooo <--------
 
 ### Super Mega Bonus Credit Hyper Fighting
 
