@@ -64,31 +64,47 @@ const app = {
     downButton.addEventListener("click", downFunction.bind(this))
     deleteButton.addEventListener("click", anotherFunction.bind(this))
     promoteButton.addEventListener("click", myFunction)
-    
-    let initial = null
+
+    let initialText = null
+    let initialYear = null
 
     function editFunction(e){
+      const yearFlick = e.target.closest(".mainFlick").querySelector('.yearLabel')
       const mainFlick = e.target.closest(".mainFlick").querySelector('.flick-name')
-      mainFlick.addEventListener("blur", blurFunction.bind(this))
-      
-      function blurFunction(){
-          editButton.classList.add('noclicked')
-          this.contentEditable = false
-          mainFlick.style.backgroundColor = '#DDA0DD'
-          editButton.classList.remove('yesclicked')
+      //mainFlick.addEventListener("blur", blurFunction.bind(this))
+      //yearFlick.addEventListener("blur", blurFunction.bind(this))
+
+      // function blurFunction(){
+      //     editButton.classList.add('noclicked')
+      //     initialText = mainFlick.textContent
+      //     initialYear = yearFlick.textContent
+      //     mainFlick.contentEditable = false
+      //     mainFlick.style.backgroundColor = '#DDA0DD'
+      //     yearFlick.contentEditable = false
+      //     yearFlick.style.backgroundColor = '#DDA0DD'
+      //     editButton.classList.remove('yesclicked')
           
-          for (let i=0; i < this.flicks.length; i++){ //don't use var
-              if (this.flicks[i].name === initial) {
-                this.flicks[i].name = mainFlick.textContent
-                this.save()
-                break;
-              }
-            }
-      }
+      //     for (let i=0; i < this.flicks.length; i++){ //don't use var
+      //         console.log(initialText)
+      //         if (this.flicks[i].name === initialText) {
+      //           this.flicks[i].name = mainFlick.textContent
+      //           this.flicks[i].year = yearFlick.textContent
+      //           this.save()
+      //           //console.log(this.flicks)
+      //           break;
+      //         }
+      //       }
+      // }
+
       if (editButton.classList.contains('noclicked')){
             editButton.classList.add('yesclicked')
+            const yearFlick = e.target.closest(".mainFlick").querySelector('.yearLabel')
             const mainFlick = e.target.closest(".mainFlick").querySelector('.flick-name')
-            initial = mainFlick.textContent
+            initialText = mainFlick.textContent
+            initialYear = yearFlick.textContent
+            yearFlick.contentEditable = true
+            yearFlick.style.backgroundColor = 'white'
+            yearFlick.style.padding = "5px"
             mainFlick.contentEditable = true
             mainFlick.style.backgroundColor = 'white'
             mainFlick.style.padding = "5px"
@@ -100,16 +116,20 @@ const app = {
             const mainFlick = e.target.closest(".mainFlick").querySelector('.flick-name')
             const yearFlick = e.target.closest(".mainFlick").querySelector('.yearLabel')
             mainFlick.contentEditable = false
-            mainFlick.style.backgroundColor = '#DDA0DD'
+            mainFlick.style.background = 'none'
+            yearFlick.contentEditable = false
+            yearFlick.style.background = 'none'
             editButton.classList.remove('yesclicked')
-            for (let i=0; i < this.flicks.length; i++){ //don't use var
-              if (this.flicks[i].name === initial) {
+            for (let i=0; i < this.flicks.length; i++){ //don't use var          
+              if (this.flicks[i].name === initialText) {
                 this.flicks[i].name = mainFlick.textContent
+                this.flicks[i].year = yearFlick.textContent
                 this.save()
                 break;
               }
             }
       }
+      
     }
     
     function upFunction(e){
@@ -183,7 +203,7 @@ const app = {
         this.list.insertBefore(e.target.parentNode, e.target.parentNode.nextSibling.nextSibling)
       }
       this.save()
-  }
+    }
    
     //delete
     function anotherFunction(ev){
@@ -207,13 +227,13 @@ const app = {
             this.classList.add('clicked')
             listItem.style.backgroundColor = 'yellow'
             listItem.style.textTransform = "uppercase"
-            listItem.style.fontSize = '25px'
+            listItem.style.fontSize = '23px'
             this.classList.remove('notclicked')
         }else{
             listItem.style.backgroundColor = '#DDA0DD'
             this.classList.add('notclicked')
             listItem.style.textTransform = "none"
-            listItem.style.fontSize = '18px'
+            listItem.style.fontSize = '20px'
             this.classList.remove('clicked')
         }
     }
