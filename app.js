@@ -1,5 +1,5 @@
-const app = {
-  init(selectors) {
+class App{
+  constructor(selectors) {
     this.flicks = []
     this.max = 0
     this.list = document.querySelector(selectors.listSelector)
@@ -8,7 +8,7 @@ const app = {
       .querySelector(selectors.formSelector)
       .addEventListener('submit', this.addFlickViaForm.bind(this))
     this.load()
-  },
+  }
 
   // load saved data when browser refreshes
   load(){
@@ -22,7 +22,7 @@ const app = {
         .reverse()
         .map(this.addFlick.bind(this))
     }
-  },
+  }
 
   addFlick(flick) {
     const listItem = this.renderListItem(flick)
@@ -230,7 +230,7 @@ const app = {
             listItem.style.textTransform = "uppercase"
             listItem.style.fontSize = '23px'
             promoteButton.classList.remove('notclicked')
-            console.log(this)
+            //console.log(this)
             this.save()
         }else{
             listItem.style.backgroundColor = '#DDA0DD'
@@ -238,7 +238,7 @@ const app = {
             listItem.style.textTransform = "none"
             listItem.style.fontSize = '20px'
             promoteButton.classList.remove('clicked')
-            console.log(this)
+            //console.log(this)
             this.save()
         }
     }
@@ -249,7 +249,7 @@ const app = {
     }
     this.flicks.unshift(flick)
     this.save()
-  },
+  }
 
   // favFlick(flick, ev){
   //   const listItem = ev.target.closest('.flick')
@@ -282,14 +282,14 @@ const app = {
     this.addFlick(flick)
     
     f.reset()
-  },
+  }
  
   //stores info in browsers wuhuuuuu  
   save(){
     localStorage
       .setItem('flicks', JSON.stringify(this.flicks))
   
-  },
+  }
 
   renderListItem(flick) {
     const item = this.template.cloneNode(true)
@@ -301,14 +301,66 @@ const app = {
     // if (flick.fav){
     //   item.classList.add('fav')
     // }
-    // for promote button to persist
+    // for promote button to persist ABOVE
+
+    // ways to add buttons onto list BELOW
+    // item
+    //   .querySelector('.flick-name')
+    //   .addEventListener('keypress', this.saveOnEnter.bind(this, flick))
+
+    // item
+    //   .querySelector('button.remove')
+    //   .addEventListener('click', this.removeFlick.bind(this))
+    // item
+    //   .querySelector('button.fav')
+    //   .addEventListener('click', this.favFlick.bind(this, flick))
+    // item
+    //   .querySelector('button.move-up')
+    //   .addEventListener('click', this.moveUp.bind(this, flick))
+    // item
+    //   .querySelector('button.move-down')
+    //   .addEventListener('click', this.moveDown.bind(this, flick))
+    // item
+    //   .querySelector('button.edit')
+    //   .addEventListener('click', this.edit.bind(this, flick))
 
     return item
-  },
+  }
 
+edit(flick, ev) {
+    const listItem = ev.target.closest('.flick')
+    const nameField = listItem.querySelector('.flick-name')
+    const btn = listItem.querySelector('.edit')
+
+    const icon = btn.querySelector('i.fa')
+
+    if (nameField.isContentEditable) {
+      // make it no longer editable
+      nameField.contentEditable = false
+      icon.classList.remove('fa-check')
+      icon.classList.add('fa-pencil')
+      btn.classList.remove('success')
+
+      // save changes
+      flick.name = nameField.textContent
+      this.save()
+    } else {
+      nameField.contentEditable = true
+      nameField.focus()
+      icon.classList.remove('fa-pencil')
+      icon.classList.add('fa-check')
+      btn.classList.add('success')
+    }
+  }
+
+  saveOnEnter(flick, ev) {
+    if (ev.key === 'Enter') {
+      this.edit(flick, ev)
+    }
+  }
 }
 
-app.init({
+const app = new App({
   formSelector: '#flick-form',
   listSelector: '#flick-list',
   templateSelector: '.flick.template',
