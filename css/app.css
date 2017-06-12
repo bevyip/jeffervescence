@@ -92,6 +92,10 @@ li{
     cursor: hand;
 }
 
+/*.flick.first-child.up{
+    cursor: not-allowed;
+}*/
+
 .yesclicked{
     font-size: 30px;
     font-weight: bold;

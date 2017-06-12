@@ -63,7 +63,7 @@ const app = {
     upButton.addEventListener("click", upFunction.bind(this))
     downButton.addEventListener("click", downFunction.bind(this))
     deleteButton.addEventListener("click", anotherFunction.bind(this))
-    promoteButton.addEventListener("click", myFunction)
+    promoteButton.addEventListener("click", myFunction.bind(this))
 
     let initialText = null
     let initialYear = null
@@ -143,11 +143,12 @@ const app = {
         }
       }
       
-      if (index === 0){
-        const curr = this.flicks[index]
-        this.flicks.splice(0,1)
-        this.flicks.push(curr)
-      }else{
+      //const index = this.flicks.findIndex((current)){
+      //   return currentFlick.id === flick.id
+      // }
+      //Alternative
+
+      if (index > 0){
         const next = this.flicks[index-1]
         const curr = this.flicks[index]
         this.flicks[index-1] = curr
@@ -222,20 +223,22 @@ const app = {
     }
 
     //promote
-    function myFunction(){
+    function myFunction(ev){
         if (promoteButton.classList.contains('notclicked')){
-            this.classList.add('clicked')
+            promoteButton.classList.add('clicked')
             listItem.style.backgroundColor = 'yellow'
             listItem.style.textTransform = "uppercase"
             listItem.style.fontSize = '23px'
-            this.classList.remove('notclicked')
+            promoteButton.classList.remove('notclicked')
+            console.log(this)
             this.save()
         }else{
             listItem.style.backgroundColor = '#DDA0DD'
-            this.classList.add('notclicked')
+            promoteButton.classList.add('notclicked')
             listItem.style.textTransform = "none"
             listItem.style.fontSize = '20px'
-            this.classList.remove('clicked')
+            promoteButton.classList.remove('clicked')
+            console.log(this)
             this.save()
         }
     }
@@ -245,6 +248,18 @@ const app = {
     this.flicks.unshift(flick)
     this.save()
   },
+
+  // favFlick(flick, ev){
+  //   const listItem = ev.target.closest('.flick')
+  //   flick.fav = !flick.fav
+
+  //   if (flick.fav) {
+  //     listItem.classList.add('fav')
+  //   } else {
+  //     listItem.classList.remove('fav')
+  //   }
+  //   this.save()
+  // },
 
   addFlickViaForm(ev) {
     ev.preventDefault()
@@ -288,6 +303,7 @@ const app = {
 
     return item
   },
+
 }
 
 app.init({
