@@ -229,12 +229,14 @@ const app = {
             listItem.style.textTransform = "uppercase"
             listItem.style.fontSize = '23px'
             this.classList.remove('notclicked')
+            this.save()
         }else{
             listItem.style.backgroundColor = '#DDA0DD'
             this.classList.add('notclicked')
             listItem.style.textTransform = "none"
             listItem.style.fontSize = '20px'
             this.classList.remove('clicked')
+            this.save()
         }
     }
 
@@ -279,6 +281,11 @@ const app = {
       .querySelector('.flick-name')
       .textContent = flick.name 
     
+    // if (flick.fav){
+    //   item.classList.add('fav')
+    // }
+    // for promote button to persist
+
     return item
   },
 }

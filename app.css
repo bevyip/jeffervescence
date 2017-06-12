@@ -44,6 +44,7 @@ button.success button{
     padding: 10px;
     text-align: center;
     cursor: default;
+    transition: 0.25s;
 }
 
 li{
