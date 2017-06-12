@@ -30,3 +30,7 @@
 ### Super Mega Bonus Credit Hyper Fighting
 
 * Have a good weekend
+
+## Day 5 Homework
+
+* update with Dave's code (edit stuff)
